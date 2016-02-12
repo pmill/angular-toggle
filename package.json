@@ -17,7 +17,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/xpepermint/angular-toggle.git"
+    "url": "git://github.com/pmill/angular-toggle.git"
   },
   "keywords": [
     "angular",
