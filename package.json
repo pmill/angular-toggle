@@ -1,0 +1,46 @@
+{
+  "name": "angular-toggle",
+  "version": "0.1.0",
+  "description": "Toggle switch directive for AngularJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "directories": {
+    "lib": "src/"
+  },
+  "files": [
+    "index.js",
+    "dist/",
+    "src/",
+    "template/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/xpepermint/angular-toggle.git"
+  },
+  "keywords": [
+    "angular",
+    "angularjs",
+    "ui",
+    "directive",
+    "switch",
+    "toggle",
+    "on",
+    "off",
+    "button",
+    "checkbox",
+    "form"
+  ],
+  "author": "pmill <dev.pmill@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pmill/angular-toggle/issues"
+  },
+  "homepage": "https://github.com/angular-toggle",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "minify": "^1.0.4",
+    "uglify-js": "^2.4.15"
+  }
+}
