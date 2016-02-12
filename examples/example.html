@@ -1,0 +1,24 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../dist/angular-toggle.min.css">
+</head>
+<body ng-app="demo" ng-controller="demoCtrl as vm">
+<pm-toggle ng-model="vm.model.enabled"></pm-toggle>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
+<script src="../dist/angular-toggle.js"></script>
+<script>
+    var app = angular.module('demo', ['angular-toggle']);
+    app.controller('demoCtrl', function() {
+        var vm = this;
+
+        vm.model = {
+            enabled: true
+        };
+    });
+</script>
+</body>
+</html>
