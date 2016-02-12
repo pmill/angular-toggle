@@ -1,6 +1,6 @@
 {
   "name": "angular-toggle",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Toggle switch directive for AngularJS",
   "main": "index.js",
   "scripts": {
