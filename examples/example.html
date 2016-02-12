@@ -6,19 +6,27 @@
     <link rel="stylesheet" href="../dist/angular-toggle.min.css">
 </head>
 <body ng-app="demo" ng-controller="demoCtrl as vm">
-<pm-toggle ng-model="vm.model.enabled"></pm-toggle>
+
+<p>
+    <pm-toggle id="$index" ng-model="t.enabled" ng-repeat="t in vm.model track by $index"></pm-toggle>
+</p>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
 <script src="../dist/angular-toggle.js"></script>
 <script>
     var app = angular.module('demo', ['angular-toggle']);
-    app.controller('demoCtrl', function() {
+    app.controller('demoCtrl', ['$scope', function($scope) {
         var vm = this;
 
-        vm.model = {
-            enabled: true
-        };
-    });
+        vm.model = [
+            { enabled: true, name: 'toggle1' },
+            { enabled: false, name: 'toggle2' }
+        ];
+
+        $scope.$on('pm-toggle.changed', function(event, args) {
+            console.log(args);
+        });
+    }]);
 </script>
 </body>
 </html>

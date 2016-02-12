@@ -1,7 +1,52 @@
-body {
-  background-color: red;
 
-  p {
-    color: green;
+
+.pm-toggle {
+  position: relative;
+  width: 60px;
+  user-select: none;
+
+  input[type="checkbox"] {
+    display: none;
   }
+
+  strong {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    height: 36px;
+    padding: 0;
+    line-height: 36px;
+    border: 2px solid #CCCCCC;
+    border-radius: 36px;
+    background-color: #FC0000;
+    transition: background-color 0.3s ease-in;
+
+    &:before {
+      content: "";
+      display: block;
+      width: 36px;
+      margin: 0;
+      background: #FFFFFF;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 22px;
+      border: 2px solid #CCCCCC;
+      border-radius: 36px;
+      transition: all 0.3s ease-in 0s;
+    }
+  }
+
+  input[type="checkbox"]:checked + strong {
+    background-color: #49E845;
+  }
+
+  input[type="checkbox"]:checked + strong, input[type="checkbox"]:checked + strong:before {
+    border-color: #49E845;
+  }
+
+  input[type="checkbox"]:checked + strong:before {
+    right: 0;
+  }
+
 }
