@@ -1,4 +1,6 @@
 (function() {
+  "use strict";
+
   angular.module('angular-toggle', []).directive('pmToggle', function() {
     return {
       restrict: 'E',
@@ -12,5 +14,5 @@
     function ToggleController() {
       var vm = this;
     }
-  }
-)});
+  });
+})();

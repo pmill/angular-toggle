@@ -8,7 +8,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var path = require('path');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
-var uglify = require('gulp-uglifyjs');
+var uglify = require('gulp-uglify');
 var eslint = require('gulp-eslint');
 var util = require('gulp-util');
 
@@ -26,7 +26,7 @@ gulp.task('lintjs', function () {
 });
 
 gulp.task('less', function() {
-  gulp.src(global.paths.less)
+  return gulp.src(global.paths.less)
     .pipe(sourcemaps.init())
     .pipe(less({paths: [ path.join(__dirname, 'less', 'includes') ]}))
     .pipe(concat('angular-toggle.css'))
@@ -36,7 +36,7 @@ gulp.task('less', function() {
   ;
 });
 
-gulp.task('minify-css', function() {
+gulp.task('css', ['less'], function() {
   return gulp.src(global.paths.dist + '/angular-toggle.css')
     .pipe(sourcemaps.init())
     .pipe(minifyCss())
@@ -45,28 +45,23 @@ gulp.task('minify-css', function() {
     .pipe(gulp.dest(global.paths.dist));
 });
 
-gulp.task('watch', function(){
-  gulp.watch([global.paths.js], ['lintjs', 'js', 'minify-js']).on('change', logChanges);
+gulp.task('watch', function() {
+  gulp.watch([global.paths.js], ['lintjs', 'js']).on('change', logChanges);
   gulp.watch([global.paths.less], ['css']).on('change', logChanges);
 });
 
 gulp.task('js', function() {
-  gulp.src(global.paths.js)
+  return gulp.src(global.paths.js)
+    .pipe(sourcemaps.init())
     .pipe(concat('angular-toggle.js'))
     .pipe(gulp.dest(global.paths.dist))
-});
-
-gulp.task('minify-js', function() {
-  gulp.src(global.paths.js)
-    .pipe(sourcemaps.init())
-    .pipe(uglify())
     .pipe(rename("angular-toggle.min.js"))
-    .pipe(sourcemaps.write())
+    .pipe(uglify())
+    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(global.paths.dist))
 });
 
-gulp.task('css', ['less', 'minify-css']);
-gulp.task('build', ['less', 'minify-css', 'js', 'minify-js']);
+gulp.task('build', ['css', 'js']);
 gulp.task('default', ['watch']);
 
 function logChanges(event) {
