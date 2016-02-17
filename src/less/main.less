@@ -1,8 +1,18 @@
-
+@angular-toggle-padding: 3px;
+@angular-toggle-container-width: 50px;
+@angular-toggle-container-height: 26px;
+@angular-toggle-button-width: 26px;
+@angular-toggle-button-height: @angular-toggle-container-height - (@angular-toggle-padding * 2);
+@angular-toggle-on-color: #1ab394;
+@angular-toggle-on-background-color: #1ab394;
+@angular-toggle-off-color: #CCCCCC;
+@angular-toggle-off-background-color: #CCCCCC;
+@angular-toggle-button-off-left: @angular-toggle-padding;
+@angular-toggle-button-on-left: @angular-toggle-container-width - @angular-toggle-button-width - @angular-toggle-padding;
 
 .pm-toggle {
   position: relative;
-  width: 60px;
+  width: @angular-toggle-container-width;
   user-select: none;
 
   input[type="checkbox"] {
@@ -13,40 +23,40 @@
     display: block;
     overflow: hidden;
     cursor: pointer;
-    height: 36px;
+    height: @angular-toggle-button-height;
     padding: 0;
-    line-height: 36px;
-    border: 2px solid #CCCCCC;
-    border-radius: 36px;
-    background-color: #FC0000;
+    line-height: @angular-toggle-button-height;
+    //border: 2px solid @angular-toggle-off-color;
+    border-radius: @angular-toggle-button-height;
+    background-color: @angular-toggle-off-background-color;
     transition: background-color 0.3s ease-in;
 
     &:before {
       content: "";
       display: block;
-      width: 36px;
+      width: @angular-toggle-button-width;
       margin: 0;
       background: #FFFFFF;
       position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 22px;
-      border: 2px solid #CCCCCC;
-      border-radius: 36px;
+      top: @angular-toggle-padding;
+      bottom: @angular-toggle-padding;
+      left: @angular-toggle-button-off-left;
+      //border: 2px solid #CCCCCC;
+      border-radius: @angular-toggle-button-height;
       transition: all 0.3s ease-in 0s;
     }
   }
 
   input[type="checkbox"]:checked + strong {
-    background-color: #49E845;
+    background-color: @angular-toggle-on-background-color;
   }
 
   input[type="checkbox"]:checked + strong, input[type="checkbox"]:checked + strong:before {
-    border-color: #49E845;
+    border-color: @angular-toggle-on-color;
   }
 
   input[type="checkbox"]:checked + strong:before {
-    right: 0;
+    left: @angular-toggle-button-on-left;
   }
 
 }

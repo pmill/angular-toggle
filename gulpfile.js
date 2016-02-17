@@ -47,7 +47,8 @@ gulp.task('css', ['less'], function() {
 
 gulp.task('watch', function() {
   gulp.watch([global.paths.js], ['lintjs', 'js']).on('change', logChanges);
-  gulp.watch([global.paths.less], ['css']).on('change', logChanges);
+  gulp.watch([global.paths.less], ['less']).on('change', logChanges);
+  gulp.watch([global.paths.dist + '/angular-toggle.css'], ['css']).on('change', logChanges);
 });
 
 gulp.task('js', function() {
